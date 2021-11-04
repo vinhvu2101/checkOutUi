@@ -45,21 +45,21 @@ const ShippingLayout = () => {
       </Grid>
 
       <Grid container item className={classes.name}>
-        {labelName.map((x) => (
-          <Grid xs={5.7}>
+        {labelName.map((x, index) => (
+          <Grid key={index} xs={5.7}>
             <AddressInput lableCity={x} />
           </Grid>
         ))}
       </Grid>
       <Grid item>
-        {labelAddress.map((x) => (
-          <AddressInput lableCity={x} />
+        {labelAddress.map((x, index) => (
+          <AddressInput key={index} lableCity={x} />
         ))}
       </Grid>
 
       <Grid container item className={classes.name}>
-        {lableCity.map((lableCity) => (
-          <Grid xs={5.7}>
+        {lableCity.map((lableCity, index) => (
+          <Grid key={index} xs={5.7}>
             <AddressInput lableCity={lableCity} />
           </Grid>
         ))}

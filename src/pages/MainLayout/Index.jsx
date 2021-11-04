@@ -150,8 +150,6 @@ const MainLayout = () => {
               )}
             </Box>
           </Grid>
-
-          <Grid item></Grid>
         </Grid>
       </Box>
     </Container>

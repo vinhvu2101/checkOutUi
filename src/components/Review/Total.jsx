@@ -23,7 +23,7 @@ const Total = (props) => {
       </Grid>
 
       <Grid xs={1.5} className={classes.price}>
-        <Typography>{total.price}</Typography>
+        <Typography>{`$${total.price}`}</Typography>
       </Grid>
     </Grid>
   );

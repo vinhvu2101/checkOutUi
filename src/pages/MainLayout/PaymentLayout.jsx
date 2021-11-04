@@ -40,8 +40,8 @@ const PaymentLayout = () => {
       </Grid>
 
       <Grid container item className={classes.name}>
-        {paymentMethod.map((paymentMethod) => (
-          <PaymentMethodInput paymentMethod={paymentMethod} />
+        {paymentMethod.map((paymentMethod, index) => (
+          <PaymentMethodInput key={index} paymentMethod={paymentMethod} />
         ))}
       </Grid>
 

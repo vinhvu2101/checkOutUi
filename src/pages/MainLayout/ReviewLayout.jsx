@@ -24,13 +24,7 @@ const ReviewLayout = () => {
       justifyContent: "center",
       alignItems: "center",
     },
-    decriptions: {
-      margin: 0,
-      fontFamily: "Roboto, Helvetica, Arial, sans-serif",
-      fontWeight: 400,
-      color: "rgba(0, 0, 0, 0.6)",
-      display: "block",
-    },
+
     shipping: {
       margin: "16px 0 7px 0 ",
       color: "black",
@@ -40,10 +34,10 @@ const ReviewLayout = () => {
   });
   const classes = useStyles();
   const product = [
-    { name: "Product 1", description: "A nice thing", price: "$9.99" },
-    { name: "Product 2", description: "Another thing", price: "$3.45" },
-    { name: "Product 3", description: "Something else", price: "$6.51" },
-    { name: "Product 4", description: "Best thing of all", price: "$14.11" },
+    { name: "Product 1", description: "A nice thing", price: 9.99 },
+    { name: "Product 2", description: "Another thing", price: 3.45 },
+    { name: "Product 3", description: "Something else", price: 6.51 },
+    { name: "Product 4", description: "Best thing of all", price: 14.11 },
   ];
   const paymentDetails = [
     { name: "Card type" },
@@ -55,9 +49,17 @@ const ReviewLayout = () => {
     { name: "Expiry date" },
     { name: "04/2024" },
   ];
+
+  const sumPrice = () => {
+    let sum = 0;
+    product.map((value) => {
+      return (sum += value.price);
+    });
+    return sum;
+  };
   const total = [
     { name: "Shipping", price: "Free" },
-    { name: "Total", price: "$34.06" },
+    { name: "Total", price: sumPrice() },
   ];
 
   return (
@@ -69,12 +71,14 @@ const ReviewLayout = () => {
           </Typography>
         </Grid>
 
-        {product.map((product) => (
-          <Product product={product} />
+        {product.map((product, index) => (
+          <Product key={index} product={product} />
         ))}
-        {total.map((total) => (
-          <Total total={total} />
+        {total.map((total, index) => (
+          <Total key={index} total={total} />
         ))}
+        {/* <Total total={shipping} /> */}
+        {/* <Total total={total} /> */}
 
         <Grid container className={classes.name}>
           <Grid xs={6}>
@@ -88,14 +92,14 @@ const ReviewLayout = () => {
           </Grid>
 
           <Grid xs={6} container item>
-            <Grid xs={12}>
+            <Grid>
               <Typography variant="h6" className={classes.shipping}>
                 Payment details
               </Typography>
             </Grid>
 
-            {paymentDetails.map((x) => (
-              <Grid item xs={6}>
+            {paymentDetails.map((x, index) => (
+              <Grid key={index} item xs={6}>
                 <Typography>{x.name}</Typography>
               </Grid>
             ))}
